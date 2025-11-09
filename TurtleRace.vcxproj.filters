@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TurtleRace.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TurtleRaceDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Drawer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JoinGameDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CreateGameDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameServer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerSocket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Interfaces.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameClient.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientSocket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Message.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BSpliner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="TurtleRace.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TurtleRaceDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Drawer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JoinGameDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CreateGameDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameServer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientSocket.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Message.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BSpliner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TurtleRace.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\TurtleRace.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\TurtleRace.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\cabbage_and.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\cabbage_or.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\turtle_run_and.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\turtle_run_blue.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\turtle_run_green.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\turtle_run_magenta.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\turtle_run_red.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\turtle_run_yellow.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\turtle0_white.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\turtle0_red.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\turtle0-blue.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\turtle0-green.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\turtle0-magenta.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\turtle0-yellow.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\turtle_card_blue_plus.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\turtle_card_blue_plusplus.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\bitmap2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\turtle_card_blue_minus.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\turtle_card_green_plusplus.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\turtle_card_magenta_plusplus.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\turtle_card_red_plusplus.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\turtle_card_yellow_plusplus.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\turtle_card_green_plus.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\turtle_card_magenta_plus.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\turtle_card_red_plus.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\turtle_card_yellow_plus.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\turtle_card_green_minus.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\turtle_card_magenta_minus.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\turtle_card_red_minus.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\turtle_card_white_minus.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\turtle_card_yellow_minus.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\turtle_card_white_plus.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\turtle_card_white_up.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\turtle_card_white_upup.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\turtlex_cancel.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\stone.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\stone.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\stone_and.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\stone_or.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\stoneflat_and.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\stoneflat_or.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
