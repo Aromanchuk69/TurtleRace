@@ -23,8 +23,7 @@ protected:
 
 	DECLARE_MESSAGE_MAP()
 public:
-	gamer_t	gamer_;
-	int m_iPort;
+	int		m_iPort;
 	CString m_sLogin;
 	virtual BOOL OnInitDialog();
 	virtual void OnOK();

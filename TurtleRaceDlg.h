@@ -34,7 +34,7 @@ protected:
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
 
-	CGame m_game_;
+	CGame			m_game_;
 public:
 	afx_msg void OnMenuQuit();
 	afx_msg void OnMenuNewgame();

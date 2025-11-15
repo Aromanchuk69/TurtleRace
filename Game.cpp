@@ -10,6 +10,12 @@ CGame::~CGame()
 {
 }
 
+void CGame::init_configuration()
+{
+	if (configuration_.load("turtlerace.cfg"))
+		AfxMessageBox("Ошибка чтения файла конфигурации!", MB_ICONINFORMATION);
+}
+
 void CGame::clear_game_info()
 {
 	if (!information_.empty())
@@ -29,7 +35,7 @@ void CGame::server_started()
 {
 	clear_game_info();
 
-	game_client_.start_client("127.0.0.1", gamer_.port_, gamer_.login_, this);
+	game_client_.start_client("127.0.0.1", configuration_.port(), configuration_.user(), this);
 }
 
 void CGame::server_start_failed(std::string reason)
@@ -55,23 +61,31 @@ void CGame::client_start_failed(std::string reason)
 	pDlg_->Invalidate(FALSE);
 }
 
-void CGame::create_game(const gamer_t& gamer)
+void CGame::create_game(int& port, const std::string& login)
 {
-	gamer_ = gamer;
+	configuration_.port(port);
+	configuration_.user(login);
+
 	game_stage_ = game_stage_t::waiting_for_connect;
-	game_server_.start_server(gamer.port_, this);
+	game_server_.start_server(configuration_.port(), this);
+
+	configuration_.save();
 }
 
-void CGame::join_game(const gamer_t& gamer)
+void CGame::join_game(const std::string& ip_address, int& port, const std::string& login)
 {
-	gamer_ = gamer;
+	configuration_.ip_address(ip_address);
+	configuration_.port(port);
+	configuration_.user(login);
+
 	game_stage_ = game_stage_t::waiting_for_connect;
-	game_client_.start_client(gamer.ip_address_, gamer.port_, gamer.login_, this);
+	game_client_.start_client(configuration_.ip_address(), configuration_.port(), configuration_.user(), this);
+
+	configuration_.save();
 }
 
 void CGame::logon_accepted(std::string name)
 {
-	gamer_.login_ = name;
 	drawer_.set_gamer_name(name);
 
 	if (!game_server_.is_started())

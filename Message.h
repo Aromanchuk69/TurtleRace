@@ -93,7 +93,7 @@ namespace messages {
 			start_position_[3] = colors_t::red;
 			start_position_[4] = colors_t::yellow;
 
-			for ( int i = 0 ; i < 10 ; i++)
+			for ( int i = 0 ; i < 11 ; i++)
 				rocks_[i].clear();
 		};
 
@@ -107,7 +107,7 @@ namespace messages {
 			}
 
 			i = 0;
-			for (i = 0; i < 10; i++)
+			for (i = 0; i < 11; i++)
 			{
 				std::vector<colors_t>::iterator	it_color;
 				for (it_color = rocks_[i].begin(); it_color != rocks_[i].end(); it_color++)
@@ -124,6 +124,14 @@ namespace messages {
 		{
 			return (start_pos + steps >= 0);
 		};
+
+		void check_for_winner()
+		{
+			if (rocks_[10].size())
+			{
+				winner_ = *rocks_[10].begin();
+			}
+		}
 
 		bool make_move(cards_t card, colors_t played_color)
 		{
@@ -160,13 +168,15 @@ namespace messages {
 						break;
 				}
 
-				if (start - 1 + steps > 9)
+				if (start - 1 + steps > 11)
 				{
+					steps = 12 - start;
 					//Побьеда (с)
-					winner_ = rocks_[start - 1][i_turtle];
-					return true;
+					//winner_ = rocks_[start - 1][i_turtle];
+					//return true;
 				}
-				else
+
+//				else
 				{
 					for (; i_turtle < int(rocks_[start - 1].size()); )
 					{
@@ -193,7 +203,7 @@ namespace messages {
 		};
 
 		colors_t				start_position_[5];
-		std::vector<colors_t>	rocks_[10];
+		std::vector<colors_t>	rocks_[11];
 		colors_t				winner_;
 	};
 
@@ -664,7 +674,7 @@ namespace messages {
 		virtual int message_length()
 		{
 			int n_turtles_on_field = 0;
-			for (int i = 0; i < 10; i++)
+			for (int i = 0; i < 11; i++)
 				n_turtles_on_field += (int)snapshot_.rocks_[i].size();
 
 			return int(
@@ -673,7 +683,7 @@ namespace messages {
 				sizeof(int) + 		// color_ size
 				sizeof(int) + 		// steps_ size
 				5 * sizeof(int) +	// start_position
-				10 * sizeof(int) +	// vector size for each rock
+				11 * sizeof(int) +	// vector size for each rock
 				n_turtles_on_field * sizeof(int)		// total cards
 				);
 		}

@@ -4,6 +4,7 @@
 #include "Drawer.h"
 #include "GameServer.h"
 #include "GameClient.h"
+#include "Configurator.h"
 
 enum class game_stage_t
 {
@@ -35,33 +36,29 @@ enum class game_stage_t
 	finished,
 };
 
-struct gamer_t
-{
-	gamer_t() : port_(23456), ip_address_("127.0.0.1")
-	{
-	};
-
-	int			port_;
-	std::string ip_address_;
-	std::string login_;
-};
-
 class CGame : public game_interface
 {
 public:
 	CGame();
 	~CGame();
+
 	void set_dialog(CDialog* pDlg) { pDlg_ = pDlg; };
 
 	bool game_in_progress() const;
 	void Draw(CDC* pDC, CRect& client);
-	const gamer_t& get_gamer() { return gamer_;  };
 
 	void init_client_rectangle(CRect client) { drawer_.init_client_rectangle(client); };
+	void init_configuration();
 
+	void get_credentials(std::string& ip_address, int& port, std::string& login)
+	{
+		ip_address = configuration_.ip_address();
+		port = configuration_.port();
+		login = configuration_.user();
+	};
 
-	void create_game(const gamer_t& gamer);
-	void join_game(const gamer_t& gamer);
+	void create_game(int& port, const std::string& login);
+	void join_game(const std::string& ip_address, int& port, const std::string& login);
 	void on_timer();
 	void on_mouse_click(CPoint point);
 	void on_mouse_move(CPoint point);
@@ -92,8 +89,8 @@ private:
 	bool			local_game_;
 	game_stage_t	game_stage_;
 	CDrawer			drawer_;
-	gamer_t			gamer_;
 	CGameServer		game_server_;
 	CGameClient		game_client_;
 	std::string		information_;
+	Configurator	configuration_;
 };

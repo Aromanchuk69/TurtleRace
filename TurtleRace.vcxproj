@@ -163,7 +163,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <Optimization>Disabled</Optimization>
     </ClCompile>
@@ -186,6 +186,7 @@
   <ItemGroup>
     <ClInclude Include="BSpliner.h" />
     <ClInclude Include="ClientSocket.h" />
+    <ClInclude Include="Configurator.h" />
     <ClInclude Include="CreateGameDlg.h" />
     <ClInclude Include="Drawer.h" />
     <ClInclude Include="framework.h" />
@@ -205,6 +206,7 @@
   <ItemGroup>
     <ClCompile Include="BSpliner.cpp" />
     <ClCompile Include="ClientSocket.cpp" />
+    <ClCompile Include="Configurator.cpp" />
     <ClCompile Include="CreateGameDlg.cpp" />
     <ClCompile Include="Drawer.cpp" />
     <ClCompile Include="Game.cpp" />

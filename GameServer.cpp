@@ -318,6 +318,23 @@ void CGameServer::process_message(CClientSocket* socket, messages::Message* mess
 							return;
 					}
 
+					game_track_.check_for_winner();
+					if (game_track_.winner_ != messages::colors_t::unknown)
+					{
+						messages::Msg_End_Game	end_game(game_track_.winner_);
+
+						for (it_gamer = gamers_.begin(); it_gamer != gamers_.end(); it_gamer++)
+							end_game.add_gamer_color(it_gamer->second.turtle_color_, it_gamer->first);
+
+						for (it_gamer = gamers_.begin(); it_gamer != gamers_.end(); it_gamer++)
+						{
+							if (it_gamer->second.socket_)
+								it_gamer->second.socket_->send_message(end_game);
+						}
+
+						return;
+					}
+
 					std::string s_info = "Ход игрока " + next_gamer_;
 					messages::Msg_Send_News news_msg(s_info);
 
@@ -421,22 +438,6 @@ void CGameServer::process_message(CClientSocket* socket, messages::Message* mess
 					}
 #endif // QUICKEND
 					///////////////////////////////////////////////////////////////////
-
-					if (game_track_.winner_ != messages::colors_t::unknown)
-					{
-						messages::Msg_End_Game	end_game(game_track_.winner_);
-
-						for (it_gamer = gamers_.begin(); it_gamer != gamers_.end(); it_gamer++)
-							end_game.add_gamer_color(it_gamer->second.turtle_color_, it_gamer->first);
-
-						for (it_gamer = gamers_.begin(); it_gamer != gamers_.end(); it_gamer++)
-						{
-							if (it_gamer->second.socket_)
-								it_gamer->second.socket_->send_message(end_game);
-						}
-
-						return;
-					}
 
 					std::vector<messages::cards_t>::iterator	it_card = cards_to_play_.begin() + (rand() % imax);
 

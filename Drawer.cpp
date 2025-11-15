@@ -121,7 +121,7 @@ void CDrawer::generate_turtle_move(messages::colors_t color, int steps)
 	int	i;
 	CPoint	from_xy, to_xy;
 
-	if (end_position > 10)
+	if (end_position > 11)
 		return;
 
 	spliner_.clear();
@@ -887,7 +887,7 @@ void CDrawer::draw_game_objects(CDC* pDC)
 			pDC->BitBlt(game_field_.turtles_position_, game_field_.main_field_rect_.top + 34 + i * 80, 110, 62, &dcMem, 0, 0, SRCINVERT);	// Вывели
 	}
 
-	for (i = 0; i < 10; i++)
+	for (i = 0; i < 11; i++)
 	{
 		std::vector<messages::colors_t>::iterator it_turtle;
 		int j = 0;
@@ -989,7 +989,7 @@ void CDrawer::init_game_ending(messages::colors_t winner_color, const std::map<m
 		}
 	}
 
-	for (i = 0; i < 10; i++)
+	for (i = 0; i < 11; i++)
 	{
 		j = 0;
 		std::vector<messages::colors_t>::iterator it_turtle;
@@ -1043,7 +1043,7 @@ void CDrawer::init_game_ending(messages::colors_t winner_color, const std::map<m
 	// Running Cabbages
 	for (i = 0; i < 8; i++)
 	{
-		ending_game_.cabbages_[i].position_.SetPoint(830, -86);
+		ending_game_.cabbages_[i].position_.SetPoint(game_field_.main_field_rect_.CenterPoint().x + 110, -86);
 		ending_game_.cabbages_[i].angle_ = 0;
 	}
 
@@ -1099,7 +1099,7 @@ bool CDrawer::step_game_ending()
 	}
 
 	// Turtles on stones
-	for (i = 0; i < 10; i++)
+	for (i = 0; i < 11; i++)
 	{
 		if (ending_game_.stones_[i].Width() > 0)
 		{
@@ -1125,10 +1125,12 @@ bool CDrawer::step_game_ending()
 		made_step = true;
 	}
 
+	int vertical_x = game_field_.main_field_rect_.CenterPoint().x + 110;
+
 	// Running cabbages
 	for (i = 0; i < 8; i++)
 	{
-		if (ending_game_.cabbages_[i].position_.x == 830 && ending_game_.cabbages_[i].position_.y <= 186)
+		if (ending_game_.cabbages_[i].position_.x == vertical_x && ending_game_.cabbages_[i].position_.y <= 186)
 		{	// At the vertical line
 			made_step = true;
 			ending_game_.cabbages_[i].position_.y += 3;
@@ -1144,7 +1146,7 @@ bool CDrawer::step_game_ending()
 			made_step = true;
 			ending_game_.cabbages_[i].angle_++;
 			double angle = double(ending_game_.cabbages_[i].angle_) / 57.3;
-			ending_game_.cabbages_[i].position_.SetPoint(int(670 + 160 * cos(angle)), int(186 + 160 * sin(angle)));
+			ending_game_.cabbages_[i].position_.SetPoint(int(game_field_.main_field_rect_.CenterPoint().x - 50 + 160 * cos(angle)), int(186 + 160 * sin(angle)));
 		}
 	}
 
@@ -1160,7 +1162,8 @@ void CDrawer::step_cabbage()
 		ending_game_.cabbages_[0].angle_ = 0;
 
 	angle = double(ending_game_.cabbages_[0].angle_) / 57.3;
-	ending_game_.cabbages_[0].position_.SetPoint(int(670 + 160 * cos(angle)), int(186 + 160 * sin(angle)));
+	ending_game_.cabbages_[0].position_.SetPoint(int(game_field_.main_field_rect_.CenterPoint().x - 50 + 160 * cos(angle)), 
+		int(186 + 160 * sin(angle)));
 
 	for (int i = 1; i < 8; i++)
 	{
@@ -1169,8 +1172,11 @@ void CDrawer::step_cabbage()
 			ending_game_.cabbages_[i].angle_ += 360;
 
 		angle = double(ending_game_.cabbages_[i].angle_) / 57.3;
-		ending_game_.cabbages_[i].position_.SetPoint(int(670 + 160 * cos(angle)), int(186 + 160 * sin(angle)));
+		ending_game_.cabbages_[i].position_.SetPoint(int(game_field_.main_field_rect_.CenterPoint().x - 50 + 160 * cos(angle)), 
+			int(186 + 160 * sin(angle)));
 	}
+
+	
 }
 
 messages::cards_t	CDrawer::card_under_cursor(CPoint& point)

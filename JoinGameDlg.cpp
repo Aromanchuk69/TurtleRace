@@ -42,9 +42,7 @@ BOOL JoinGameDlg::OnInitDialog()
 	CDialogEx::OnInitDialog();
 
 	// TODO:  Add extra initialization here
-	m_iPort = gamer_.port_;
-	m_sLogin = gamer_.login_.c_str();
-	m_cIPAddress.SetWindowText(gamer_.ip_address_.c_str());
+	m_cIPAddress.SetWindowText(m_sIpAddress.c_str());
 
 	UpdateData(FALSE);
 
@@ -57,33 +55,29 @@ void JoinGameDlg::OnOK()
 	// TODO: Add your specialized code here and/or call the base class
 	UpdateData();
 
-	gamer_.port_ = m_iPort;
-	gamer_.login_ = LPCTSTR(m_sLogin);
-
 	CString		sAddress;
 	m_cIPAddress.GetWindowTextA(sAddress);
-	gamer_.ip_address_ = LPCSTR(sAddress);
+	m_sIpAddress = LPCSTR(sAddress);
 
-
-	if (gamer_.login_.empty())
+	if (!m_sLogin.GetLength())
 	{
 		MessageBox("Не задано имя", "Неверно", MB_ICONERROR);
 		return;
 	}
 
-	if (gamer_.login_.length() > 12)
+	if (m_sLogin.GetLength() > 12)
 	{
 		MessageBox("Ох, и имечко!\nВыберите покороче, пожалуйста.\nНе более 12 символов", "Неверно", MB_ICONERROR);
 		return;
 	}
 
-	if (gamer_.port_ < 10000 || gamer_.port_ > 65535)
+	if (m_iPort < 10000 || m_iPort > 65535)
 	{
 		MessageBox("Выберите другой порт", "Неверно", MB_ICONERROR);
 		return;
 	}
 
-	if (gamer_.ip_address_.empty())
+	if (m_sIpAddress.empty())
 	{
 		MessageBox("Не задан IP адрес для соединения", "Неверно", MB_ICONERROR);
 		return;

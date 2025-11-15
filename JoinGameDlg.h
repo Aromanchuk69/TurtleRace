@@ -22,10 +22,10 @@ protected:
 
 	DECLARE_MESSAGE_MAP()
 public:
-	gamer_t	gamer_;
-	CIPAddressCtrl m_cIPAddress;
-	int m_iPort;
-	CString m_sLogin;
+	CIPAddressCtrl	m_cIPAddress;
+	int				m_iPort;
+	CString			m_sLogin;
+	std::string		m_sIpAddress;
 	virtual BOOL OnInitDialog();
 	virtual void OnOK();
 };

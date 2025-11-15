@@ -330,7 +330,7 @@ class CDrawer
 		bool						inited_;
 		running_turtle_for_return_t	turtles_[5];
 		CPlayingCard				playing_cards_[5];
-		CRect						stones_[10];
+		CRect						stones_[11];
 		CRect						winner_turtle_;
 		running_cabbage_t			cabbages_[8];
 	};
@@ -346,7 +346,7 @@ class CDrawer
 			int h_border = int ( double(rect.Width()) * 0.21);
 
 			main_field_rect_.SetRect(rect.left+1, rect.top+1, rect.right-1, v_border -1);
-			info_field_rect_.SetRect(rect.left + 1, v_border, 301, rect.bottom - 1);	// 454
+			info_field_rect_.SetRect(rect.left + 1, v_border, h_border - 1, rect.bottom - 1);	// 454
 			card_field_rect_.SetRect(h_border, v_border, rect.right - 1, rect.bottom - 1);
 
 			start_button_ext_rectangle_.SetRect(card_field_rect_.right - 320,

@@ -121,6 +121,8 @@ BOOL CTurtleRaceDlg::OnInitDialog()
 		m_game_.init_client_rectangle(client);
 	}
 
+	m_game_.init_configuration();
+
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
 
@@ -220,11 +222,17 @@ void CTurtleRaceDlg::OnMenuNewgame()
 	if (!m_game_.game_in_progress())
 	{
 		CreateGameDlg	dlg_create_game;
-		dlg_create_game.gamer_ = m_game_.get_gamer();
+
+		std::string ip_address;
+		std::string login;
+
+		m_game_.get_credentials(ip_address, dlg_create_game.m_iPort, login);
+
+		dlg_create_game.m_sLogin =	login.c_str();
 
 		if (dlg_create_game.DoModal() == IDOK)
 		{
-			m_game_.create_game(dlg_create_game.gamer_);
+			m_game_.create_game(dlg_create_game.m_iPort, LPCSTR(dlg_create_game.m_sLogin));
 		}
 	}
 	else
@@ -237,11 +245,16 @@ void CTurtleRaceDlg::OnMenuJoingame()
 	if (!m_game_.game_in_progress())
 	{
 		JoinGameDlg	dlg_join_game;
-		dlg_join_game.gamer_ = m_game_.get_gamer();
+
+		std::string login;
+
+		m_game_.get_credentials(dlg_join_game.m_sIpAddress, dlg_join_game.m_iPort, login);
+
+		dlg_join_game.m_sLogin = login.c_str();
 
 		if (dlg_join_game.DoModal() == IDOK)
 		{
-			m_game_.join_game(dlg_join_game.gamer_);
+			m_game_.join_game(dlg_join_game.m_sIpAddress, dlg_join_game.m_iPort, LPCSTR(dlg_join_game.m_sLogin));
 		}
 	}
 	else

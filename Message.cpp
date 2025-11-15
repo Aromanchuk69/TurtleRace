@@ -440,7 +440,7 @@ namespace messages {
 		for ( i=0 ; i< 5 ; i++)
 			offset += serialize_int(buffer + offset, int(snapshot_.start_position_[i]));
 
-		for (i = 0; i < 10; i++)
+		for (i = 0; i < 11; i++)
 		{
 			offset += serialize_int(buffer + offset, int(snapshot_.rocks_[i].size()));
 
@@ -470,7 +470,7 @@ namespace messages {
 			snapshot_.start_position_[i] = colors_t(tmp_int);
 		}
 
-		for (i = 0; i < 10; i++)
+		for (i = 0; i < 11; i++)
 		{
 			offset += deserialize_int(buffer + offset, n_turtles_here);
 			for (j = 0; j < n_turtles_here; j++)
