@@ -312,8 +312,6 @@ void CGame::on_timer()
 		if (!drawer_.step_game_ending())
 		{
 			game_stage_ = game_stage_t::game_finished;
-			game_client_.stop_client();
-			game_server_.stop_server();
 		}
 		break;
 	case game_stage_t::game_finished:
@@ -460,8 +458,15 @@ void CGame::on_mouse_click(CPoint point)
 		break;
 	case game_stage_t::game_finished:
 		if (drawer_.is_start_pressed(point))
-			game_stage_ = game_stage_t::not_started_yet;
-		information_ = "Начните новую игру или подключитесь к существующей";
+		{
+			if (!game_server_.is_started())
+				game_client_.ready_to_start();
+
+
+			clear_game_info();
+
+			game_stage_ = game_stage_t::waiting_for_press_start;
+		}
 		break;
 	}
 }

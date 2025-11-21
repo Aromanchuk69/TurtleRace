@@ -168,9 +168,9 @@ namespace messages {
 						break;
 				}
 
-				if (start - 1 + steps > 11)
+				if (start + steps > 11)
 				{
-					steps = 12 - start;
+					steps = 11 - start;
 					//Побьеда (с)
 					//winner_ = rocks_[start - 1][i_turtle];
 					//return true;

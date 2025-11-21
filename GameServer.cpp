@@ -47,6 +47,7 @@ void CGameServer::stop_server()
 	server_socket_ = NULL;
 
 	gamers_.clear();
+	game_track_.init();
 
 	responser_ = NULL;
 }
@@ -299,7 +300,6 @@ void CGameServer::process_message(CClientSocket* socket, messages::Message* mess
 						}
 					}
 
-					next_gamer_ = gamers_.begin()->first;
 					game_track_.init();
 				}
 				break;
@@ -330,9 +330,24 @@ void CGameServer::process_message(CClientSocket* socket, messages::Message* mess
 						{
 							if (it_gamer->second.socket_)
 								it_gamer->second.socket_->send_message(end_game);
+
+							it_gamer->second.ready_to_start_ = false;
+							it_gamer->second.ready_for_race_ = false;
 						}
 
+						game_track_.init();
+						next_gamer_ = "";
 						return;
+					}
+
+					if (next_gamer_.empty())
+					{
+						std::vector<std::string> names;
+
+						for (it_gamer = gamers_.begin(); it_gamer != gamers_.end(); it_gamer++)
+							names.push_back(it_gamer->first);
+
+						next_gamer_ = *(names.begin() + int(rand() % gamers_.size()));
 					}
 
 					std::string s_info = "Ход игрока " + next_gamer_;
