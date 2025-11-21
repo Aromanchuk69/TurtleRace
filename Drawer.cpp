@@ -385,7 +385,7 @@ void CDrawer::write_game_info(CDC* pDC, const char* text)
 	pDC->SetBkMode(TRANSPARENT);
 
 //	1442 * 710
-	pDC->TextOut(872, 650, text);
+	pDC->TextOut(game_field_.card_field_rect_.CenterPoint().x, game_field_.card_field_rect_.bottom - m_iGameTextHeight * 1.5, text);
 }
 
 void CDrawer::write_gamers_list(CDC* pDC, CRect& client)
@@ -1398,6 +1398,8 @@ bool CDrawer::init_color_clarification(messages::cards_t card, const std::set<me
 
 	color_clarification_.add_variant(messages::colors_t::unknown);	// ִכÿ מעלוםû
 	color_clarification_.init_positions(game_field_.card_field_rect_);
+
+	return true;
 }
 
 bool CDrawer::color_clarification_begin()

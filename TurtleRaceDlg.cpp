@@ -110,7 +110,7 @@ BOOL CTurtleRaceDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
 	// TODO: Add extra initialization here
-	SetTimer(IDT_TIMER, 20, NULL);
+	SetTimer(IDT_TIMER, 15, NULL);
 
 	{
 		CRect		client;
