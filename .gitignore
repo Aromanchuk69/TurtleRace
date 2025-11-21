@@ -97,6 +97,7 @@ $RECYCLE.BIN/
 *.tmp
 *.old
 *.suo
+*.aps
 
 # Test results
 [Tt]est[Rr]esult*/
